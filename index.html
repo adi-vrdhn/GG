@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Best Person in the World</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f7e7e2;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.images{
+display:flex;
+gap:40px;
+justify-content:center;
+margin-top:20px;
+}
+
+img{
+width:160px;
+height:160px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.shake{
+animation:shake 0.4s;
+}
+
+@keyframes shake{
+0%{transform:translateX(0)}
+25%{transform:translateX(-7px)}
+50%{transform:translateX(7px)}
+75%{transform:translateX(-7px)}
+100%{transform:translateX(0)}
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+border:none;
+background:#ff5c7a;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+.hidden{
+display:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="nameScreen">
+
+<h2>Enter your name</h2>
+
+<input id="nameInput">
+
+<br><br>
+
+<button onclick="start()">Start</button>
+
+</div>
+
+
+<div id="game" class="hidden">
+
+<h2>Best Person in the World Competition</h2>
+
+<p>Choose the best person</p>
+
+<div class="images">
+
+<img id="gayatri">
+
+<img id="opponent">
+
+</div>
+
+<p id="round"></p>
+
+</div>
+
+
+<div id="win" class="hidden">
+
+<h1>You passed all rounds 😌</h1>
+<p>Obviously the best person is you.</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+let opponents = [
+
+"https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Lionel_Messi.jpg",
+"https://upload.wikimedia.org/wikipedia/commons/2/2f/Gareth_Bale_2018.jpg",
+"https://upload.wikimedia.org/wikipedia/commons/a/a3/Luis_Suarez_2018.jpg",
+"https://upload.wikimedia.org/wikipedia/commons/7/7c/Neymar_2018.jpg",
+"https://upload.wikimedia.org/wikipedia/en/7/76/Darth_Vader.jpg",
+"https://upload.wikimedia.org/wikipedia/commons/3/3a/Mallard_duck.jpg"
+
+]
+
+let round = 0
+
+function start(){
+
+let name = document.getElementById("nameInput").value.toLowerCase()
+
+if(name !== "gayatri"){
+alert("Only Gayatri can enter this competition.")
+return
+}
+
+document.getElementById("nameScreen").classList.add("hidden")
+document.getElementById("game").classList.remove("hidden")
+
+loadRound()
+
+}
+
+function loadRound(){
+
+document.getElementById("gayatri").src =
+"https://via.placeholder.com/160/ff6b6b/ffffff?text=GAYATRI"
+
+document.getElementById("opponent").src = opponents[round]
+
+document.getElementById("round").innerText =
+"Round " + (round+1) + " of " + opponents.length
+
+}
+
+document.getElementById("gayatri").onclick = function(){
+
+round++
+
+if(round >= opponents.length){
+
+document.getElementById("game").classList.add("hidden")
+document.getElementById("win").classList.remove("hidden")
+
+return
+}
+
+loadRound()
+
+}
+
+document.getElementById("opponent").onclick = function(){
+
+let img = document.getElementById("opponent")
+
+img.classList.add("shake")
+
+setTimeout(()=>{
+img.classList.remove("shake")
+},400)
+
+}
+
+</script>
+
+</body>
+</html>
