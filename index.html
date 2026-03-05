@@ -2,16 +2,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Best Person in the World</title>
+<title>Cutest Person in the World Competition</title>
 
 <style>
 
 body{
-font-family:Arial;
-background:#f7e7e2;
+font-family: Arial;
+background:#f6e7e3;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 height:100vh;
 text-align:center;
 }
@@ -21,6 +21,7 @@ background:white;
 padding:40px;
 border-radius:15px;
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
+max-width:600px;
 }
 
 .images{
@@ -31,9 +32,10 @@ margin-top:20px;
 }
 
 img{
-width:160px;
-height:160px;
-border-radius:10px;
+width:180px;
+height:180px;
+object-fit:cover;
+border-radius:12px;
 cursor:pointer;
 }
 
@@ -86,9 +88,9 @@ display:none;
 
 <div id="game" class="hidden">
 
-<h2>Best Person in the World Competition</h2>
+<h2>Cutest Person in the World Competition</h2>
 
-<p>Choose the best person</p>
+<p>Select the cutest person</p>
 
 <div class="images">
 
@@ -105,8 +107,13 @@ display:none;
 
 <div id="win" class="hidden">
 
-<h1>You passed all rounds 😌</h1>
-<p>Obviously the best person is you.</p>
+<h1>You finished all rounds 😌</h1>
+
+<img src="images/GAYATRI.jpeg" style="margin-top:20px; width:220px; height:220px; object-fit:cover; border-radius:12px;">
+
+<p style="margin-top:20px;">
+Turns out the cutest person in the world is Gayatri.
+</p>
 
 </div>
 
@@ -117,16 +124,17 @@ display:none;
 
 let opponents = [
 
-"https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Lionel_Messi.jpg",
-"https://upload.wikimedia.org/wikipedia/commons/2/2f/Gareth_Bale_2018.jpg",
-"https://upload.wikimedia.org/wikipedia/commons/a/a3/Luis_Suarez_2018.jpg",
-"https://upload.wikimedia.org/wikipedia/commons/7/7c/Neymar_2018.jpg",
-"https://upload.wikimedia.org/wikipedia/en/7/76/Darth_Vader.jpg",
-"https://upload.wikimedia.org/wikipedia/commons/3/3a/Mallard_duck.jpg"
+"images/ronaldo.jpeg",
+"images/rana.jpeg",
+"images/ryan.jpeg",
+"images/srk.jpeg",
+"images/Stitch.jpeg",
+"images/sydeny.jpeg"
 
 ]
 
 let round = 0
+
 
 function start(){
 
@@ -144,17 +152,20 @@ loadRound()
 
 }
 
+
 function loadRound(){
 
 document.getElementById("gayatri").src =
-"https://via.placeholder.com/160/ff6b6b/ffffff?text=GAYATRI"
+"images/GAYATRI.jpeg"
 
-document.getElementById("opponent").src = opponents[round]
+document.getElementById("opponent").src =
+opponents[round]
 
 document.getElementById("round").innerText =
 "Round " + (round+1) + " of " + opponents.length
 
 }
+
 
 document.getElementById("gayatri").onclick = function(){
 
@@ -171,6 +182,7 @@ return
 loadRound()
 
 }
+
 
 document.getElementById("opponent").onclick = function(){
 
